@@ -1,0 +1,15 @@
+idea编译器忽略文件配置
+.idea/
+.idea
+*.iml
+*.ipr
+*.iws
+
+target
+logs
+logs/
+
+
+**/logback-test.xml
+
+#忽略单元测试不进行提交
