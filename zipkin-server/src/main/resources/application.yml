@@ -7,22 +7,24 @@ server:
 spring:
   application:
     name: zipkin-server
+  sleuth:
+    enabled: false #表示当前程序不使用sleuth
+  datasource:
+    url: jdbc:mysql://192.168.77.128:3306/zipkindb?autoReconnect=true&useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&useSSL=false
+    username: root
+    password: chenyan
+    driver-class-name: com.mysql.jdbc.Driver
+    continue-on-error: true
 zipkin:
   storage:
-    type: elasticsearch
-    elasticsearch:
-      hosts: http://192.168.2.85:9200
-      index: zipkin
-      max-requests: 64
-      index-shards: 5
-      index-replicas: 1
+    type: mysql
   collector:
     rabbitmq:
-#        addresses: 192.168.2.201:5672
+      addresses: localhost:5672
       concurrency: 1
       connection-timeout: 60000
-#        password: admin
-#        username: admin
+      password: guest # guest只运行通过localhost访问
+      username: guest
       queue: zipkin
-      uri: amqp://admin:admin@192.168.2.201:5672/epm-monitor-service
-#        virtual-host: epm-monitor-service
+      #uri: amqp://admin:admin@192.168.18.191:5672/epm-monitor-service
+      #virtual-host: epm-monitor-service

@@ -13,11 +13,11 @@ spring:
     sampler:
       percentage: 1.0
   rabbitmq:
-    host: 192.168.2.201
+    host: localhost
     port: 5672
-    username: admin
-    password: admin
-    virtual-host: epm-monitor-service
+    username: guest
+    password: guest
+    #virtual-host: epm-monitor-service
 eureka:
   client:
     serviceUrl:
